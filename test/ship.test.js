@@ -1,4 +1,4 @@
-import { Ship } from '../src/ship.js';
+import Ship from '../src/ship.js';
 
 test('Hit function increases hits by 1', () => {
   const myShip = Ship();
