@@ -1,5 +1,3 @@
-import Ship from './ship.js'
-
 export default function GameBoard() {
   const grid = [[],[],[],[],[],[],[],[],[],[]];
   const ships = [];
@@ -84,8 +82,3 @@ export default function GameBoard() {
 
   return { addShip, grid, ships, receiveAttack, misses, areAllShipsSunk, hits };
 };
-
-const gb = GameBoard();
-gb.addShip([0,0],[0,0],Ship(1));
-gb.receiveAttack([0,0])
-gb.receiveAttack([0,0])
