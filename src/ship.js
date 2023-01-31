@@ -10,7 +10,7 @@ export default function Ship(length = 0) {
   }
 
   const isSunk = () => {
-    return hits - length >= 0;
+    return length - hits <= 0;
   }
 
   return { getHits, hit, isSunk, length };

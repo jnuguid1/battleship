@@ -76,7 +76,7 @@ test ('Add ship with invalid length', () => {
   const ship3 = gb3.addShip([0,0], [0,0], Ship(-1));
   expect(gb3.grid[0][0]).toBe(undefined);
   expect(ship3).toBe(null);
-})
+});
 
 test ('Add right to left ship', () => {
   const gb = GameBoard();
@@ -100,4 +100,79 @@ test ('Prevent ship overlap', () => {
   expect(gb2.grid[0][1]).toBe(ship3);
   expect(gb2.grid[0][2]).toBe(ship3);
   expect(ship4).toBe(null);
+});
+
+test('Added ship is in ships array', () => {
+  const gb = GameBoard();
+  const ship1 = gb.addShip([0,0], [0,0], Ship(1));
+  const ship2 = gb.addShip([1,1], [1,1], Ship(1));
+  expect(gb.ships).toContain(ship1);
+  expect(gb.ships).toContain(ship2);
+});
+
+test('Register hit on ship after receiveAttack', () => {
+  const gb = GameBoard();
+  const ship1 = gb.addShip([0,0], [0,0], Ship(1));
+  gb.receiveAttack([0,0]);
+  expect(ship1.getHits()).toBe(1);
+});
+
+test('No hit registered on miss from receiveAttack', () => {
+  const gb = GameBoard();
+  const ship1 = gb.addShip([0,0], [0,0], Ship(1));
+  gb.receiveAttack([1,1]);
+  expect(ship1.getHits()).toBe(0);
+});
+
+test('Records missed shot in misses array after receiveAttack', () => {
+  const gb = GameBoard();
+  gb.addShip([0,0], [0,0], Ship(1));
+  gb.receiveAttack([1,1]);
+  expect(gb.misses).toContainEqual([1,1]);
+});
+
+test('reportAllSunk correctly reports true', () => {
+  const gb = GameBoard();
+  gb.addShip([0,0], [0,0], Ship(1));
+  gb.receiveAttack([0,0]);
+  gb.addShip([1,1],[1,1], Ship(1));
+  gb.receiveAttack([1,1]);
+  expect(gb.areAllShipsSunk()).toBe(true);
+});
+
+test('reportAllSunk correctly reports false', () => {
+  const gb = GameBoard();
+  gb.addShip([0,0], [0,0], Ship(1));
+  gb.receiveAttack([0,0]);
+  gb.addShip([1,1],[1,1], Ship(1));
+  expect(gb.areAllShipsSunk()).toBe(false);
+});
+
+test('reportAllSunk called on empty array returns false', () => {
+  const gb = GameBoard();
+  expect(gb.areAllShipsSunk()).toBe(false);
+});
+
+test('receiveAttack pushes hits onto hits array', () => {
+  const gb = GameBoard();
+  gb.addShip([0,0],[0,0],Ship(1));
+  gb.receiveAttack([0,0]);
+  expect(gb.hits).toContainEqual([0,0]);
+});
+
+test('receiveAttack returns true on legal attack', () => {
+  const gb = GameBoard();
+  gb.addShip([0,0],[0,0],Ship(1));
+  expect(gb.receiveAttack([0,0])).toBe(true);
+});
+
+test('receiveAttack returns false when attacking same square twice', () => {
+  const gb = GameBoard();
+  gb.addShip([0,0],[0,0],Ship(1));
+  expect(gb.receiveAttack([0,0])).toBe(true);
+  expect(gb.receiveAttack([0,0])).toBe(false);
+
+  expect(gb.receiveAttack([1,1])).toBe(true);
+  expect(gb.receiveAttack([1,1])).toBe(false);
+
 })
