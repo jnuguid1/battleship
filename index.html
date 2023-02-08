@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battleship</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet"></head>
+<body>
+  <h1>Battleship</h1>
+  <div id="play-section" class="not-allowed">
+    <div id="player-area">
+      <h2>Your Ships</h2>
+    </div>
+    <div id="enemy-area">
+      <h2>Enemy Ships</h2>
+    </div>
+  </div>
+  <div id="game-status-section">
+    <h2 id="game-status">Place your ships by entering start and end coordinates below like 'A5' or 'B2'. Press confirm when ready.</h2>
+    <button id="restart-btn" class="hidden">Restart</button>
+  </div>
+  <div id="ship-form-section" class="flex-show">
+    <form id="ship-form" novalidate>
+      <div class="carrier-form">
+        <label for="carrier">Carrier</label>
+        <div class="inputs">
+          <input type="text" id="carrier-start" size="1" maxlength="2" autocomplete="off"> -
+          <input type="text" id="carrier-end" size="1" maxlength="2" autocomplete="off">
+        </div>
+      </div>
+      <div class="battleship-form">
+        <label for="battleship">Battleship</label>
+        <div class="inputs">
+          <input type="text" id="battleship-start" size="1" maxlength="2" autocomplete="off"> -
+          <input type="text" id="battleship-end" size="1" maxlength="2" autocomplete="off">
+        </div>
+      </div class="battleship-form">
+      <div class="cruiser-form">
+        <label for="cruiser">Cruiser</label>
+        <div class="inputs">
+          <input type="text" id="cruiser-start" size="1" maxlength="2" autocomplete="off"> -
+          <input type="text" id="cruiser-end" size="1" maxlength="2" autocomplete="off">
+        </div>
+      </div>
+      <div class="submarine-form">
+        <label for="submarine">Submarine</label>
+        <div class="inputs">
+          <input type="text" id="submarine-start" size="1" maxlength="2" autocomplete="off"> -
+          <input type="text" id="submarine-end" size="1" maxlength="2" autocomplete="off">
+        </div>
+      </div>
+      <div class="destroyer-form">
+        <label for="destroyer">Destroyer</label>
+        <div class="inputs">
+          <input type="text" id="destroyer-start" size="1" maxlength="2" autocomplete="off"> -
+          <input type="text" id="destroyer-end" size="1" maxlength="2" autocomplete="off">
+        </div>
+      </div>
+
+    </form>
+    <div id="buttons-container">
+      <button id="randomize-ships-btn">Random</button>
+      <button form="ship-form">Confirm</button>
+    </div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
