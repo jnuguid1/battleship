@@ -1,4 +1,4 @@
-export default function Ship(length = 0) {
+export default function Ship(length = 0, ship) {
   let hits = 0;
 
   const getHits = () => {
@@ -13,5 +13,5 @@ export default function Ship(length = 0) {
     return length - hits <= 0;
   }
 
-  return { getHits, hit, isSunk, length };
+  return { getHits, hit, isSunk, length, ship };
 };

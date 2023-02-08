@@ -1,0 +1,121 @@
+:root {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body, h1, h2, p {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+.click-disabled {
+  pointer-events: none;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
+
+.flex-show {
+  display: flex;
+}
+
+.inline-show {
+  display: inline;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#play-section {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
+}
+
+#play-section h2 {
+  font-size: 22px;
+  text-align: center;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(11, 37px);
+  grid-template-rows: repeat(11, 37px);
+}
+
+.game-board p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-cell {
+  border: solid 1px black;
+}
+
+.ship {
+  background-color: darkgray;
+}
+
+.hit {
+  background-color: lightcoral;
+}
+
+.miss {
+  background-color: lightblue;
+}
+
+#game-status-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#game-status {
+  text-align: center;
+  font-weight: 300;
+  margin-top: 45px;
+  max-width: 35%;
+}
+
+#ship-form {
+  display: flex;
+  gap: 18px;
+}
+
+.inputs {
+  margin-top: 8px;
+}
+
+#ship-form-section {
+  margin-top: 45px;
+  gap: 24px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.attack-display {
+  text-align: center;
+  margin-top: 24px;
+}
+
+#randomize-ships-btn {
+  margin-right: 12px;
+}
+
+#restart-btn {
+  margin-top: 18px;
+}
